@@ -13,7 +13,7 @@ PIN_DEF = icebreaker.pcf
 PACKAGE = sg48
 
 # target freq for vga panel
-FREQ = 31.5
+FREQ = 25
 
 all: $(LISTINGS) $(PROJECT).bin
 

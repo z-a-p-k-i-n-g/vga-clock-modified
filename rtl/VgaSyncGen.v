@@ -15,12 +15,13 @@
 // Revision 0.03 - Solved some mistakes.
 // Revision 0.04 - Change for 640x480@72Hz and output signals 'activevideo'
 //                 and 'px_clk'.
+// Revising this for 640x360@60Hz
 //
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
 module VgaSyncGen (
-            input wire       px_clk,        // Input clock: 31.5MHz
+            input wire       px_clk,        // Input clock: 25MHz
             input wire       reset,         // reset
             output wire      hsync,         // Horizontal sync out
             output wire      vsync,         // Vertical sync out
@@ -32,26 +33,26 @@ module VgaSyncGen (
     /*
     http://www.epanorama.net/faq/vga2rgb/calc.html
     [*User-Defined_mode,(640X480)]
-    PIXEL_CLK   =   31500
+    PIXEL_CLK   =   25Mhz
     H_DISP      =   640
     V_DISP      =   480
-    H_FPORCH    =   24
-    H_SYNC      =   40
-    H_BPORCH    =   128
-    V_FPORCH    =   9
-    V_SYNC      =   3
-    V_BPORCH    =   28
+    H_FPORCH    =   16
+    H_SYNC      =   96
+    H_BPORCH    =   48
+    V_FPORCH    =   10
+    V_SYNC      =   2
+    V_BPORCH    =   33
     */
 
     // Video structure constants.
     parameter activeHvideo = 640;               // Width of visible pixels.
     parameter activeVvideo =  480;              // Height of visible lines.
-    parameter hfp = 24;                         // Horizontal front porch length.
-    parameter hpulse = 40;                      // Hsync pulse length.
-    parameter hbp = 128;                        // Horizontal back porch length.
-    parameter vfp = 9;                          // Vertical front porch length.
-    parameter vpulse = 3;                       // Vsync pulse length.
-    parameter vbp = 28;                         // Vertical back porch length.
+    parameter hfp = 16;                         // Horizontal front porch length.
+    parameter hpulse = 96;                      // Hsync pulse length.
+    parameter hbp = 48;                        // Horizontal back porch length.
+    parameter vfp = 10;                          // Vertical front porch length.
+    parameter vpulse = 2;                       // Vsync pulse length.
+    parameter vbp = 33;                         // Vertical back porch length.
     parameter blackH = hfp + hpulse + hbp;      // Hide pixels in one line.
     parameter blackV = vfp + vpulse + vbp;      // Hide lines in one frame.
     parameter hpixels = blackH + activeHvideo;  // Total horizontal pixels.

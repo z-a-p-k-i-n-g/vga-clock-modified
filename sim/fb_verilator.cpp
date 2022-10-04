@@ -98,8 +98,8 @@ int main(int argc, char **argv) {
 
 			// h and v blank logic
 			if ((0 == top->hsync) && (0 == top->vsync)) {
-				hnum = -128;
-				vnum = -28;
+				hnum = -48;
+				vnum = -33;
 			}
 
 			// active frame
@@ -111,8 +111,8 @@ int main(int argc, char **argv) {
 
 			// keep track of encountered fields
 			hnum++;
-			if (hnum >= 640 + 24 + 40) {
-				hnum = -128;
+			if (hnum >= 640 + 16 + 96) {
+				hnum = -48;
 				vnum++;
 			}
 
